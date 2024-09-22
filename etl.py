@@ -86,4 +86,4 @@ def etl_process(file_path, start_date, end_date, db_config):
     load_data_to_target_table(start_date, end_date, db_config)
 
 # Выполнение полного ETL-процесса
-etl_process('source_data.csv', '2024-01-01', '2024-01-31', db_config)
+etl_process('music.xlsx - Лист1.csv', '2024-01-01', '2024-01-31', db_config)
