@@ -1,0 +1,55 @@
+CREATE TABLE Artists (
+    ID SERIAL PRIMARY KEY,
+    artist VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Cities (
+    ID SERIAL PRIMARY KEY,
+    City VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Users (
+	ID SERIAL PRIMARY KEY,
+    userID Text,
+    CityID INT,
+    FOREIGN KEY (CityID) REFERENCES Cities(ID)
+);
+
+CREATE TABLE Genres (
+    ID SERIAL PRIMARY KEY,
+    genre VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Tracks (
+    ID SERIAL PRIMARY KEY,
+    track VARCHAR(255) NOT NULL,
+    genreID INT,
+    FOREIGN KEY (genreID) REFERENCES Genres(ID)
+);
+
+CREATE TABLE Dayes (
+    ID SERIAL PRIMARY KEY,
+    day DATE NOT NULL
+);
+
+CREATE TABLE TA (
+    ID SERIAL PRIMARY KEY,
+    trackID INT NOT NULL,
+    artistID INT NOT NULL,
+    FOREIGN KEY (trackID) REFERENCES Tracks(ID),
+    FOREIGN KEY (artistID) REFERENCES Artists(ID)
+);
+
+CREATE TABLE Listening (
+    ID SERIAL PRIMARY KEY,
+    userID INT,
+    artistID INT,
+    trackID INT,
+    dayID INT,
+    timme TIME NOT NULL,
+    report_date DATE NOT NULL,
+    FOREIGN KEY (userID) REFERENCES Users(ID),
+    FOREIGN KEY (artistID) REFERENCES Artists(ID),
+    FOREIGN KEY (trackID) REFERENCES Tracks(ID),
+    FOREIGN KEY (dayID) REFERENCES Dayes(ID)
+);

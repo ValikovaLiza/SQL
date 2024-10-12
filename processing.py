@@ -6,7 +6,7 @@ df = pd.read_csv(csv_file_path)
 
 
 df['time'] = df['time'].str.replace(',', '.').astype(float)
-
+df = df.fillna(0)
 
 engine = create_engine('postgresql+psycopg2://postgres:12345@localhost:5432/postgres')
 
@@ -14,3 +14,4 @@ engine = create_engine('postgresql+psycopg2://postgres:12345@localhost:5432/post
 df.to_sql('raw_data', engine, if_exists='replace', index=False)
 
 print("Data loaded successfully into PostgreSQL.")
+
