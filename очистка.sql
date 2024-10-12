@@ -1,3 +1,5 @@
+DELETE TABLE cleaned_data
+
 CREATE TABLE cleaned_data AS
 SELECT *
 FROM raw_data
